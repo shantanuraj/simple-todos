@@ -26,7 +26,7 @@ export const fetchTodos = () => {
   return dispatch => {
     dispatch(getTodos())
 
-    return fetch('http://www.mocky.io/v2/59ecdb853100009601d24e61')
+    return fetch('https://www.mocky.io/v2/59ecdb853100009601d24e61')
       .then(res => res.json())
       .then(todos => dispatch(getTodosSuccess(todos)))
       .catch(err => dispatch(getTodosFailure(err.message)));

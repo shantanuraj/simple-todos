@@ -42,7 +42,7 @@ export const performLogin = (username, password) => {
   return dispatch => {
     dispatch(loginStart())
 
-    return fetch('http://www.mocky.io/v2/59ecdbab3100009601d24e62')
+    return fetch('https://www.mocky.io/v2/59ecdbab3100009601d24e62')
       .then(res => res.json())
       .then(res => dispatch(loginSuccess(res.token)))
       .then(() => dispatch(push('/todos')))
