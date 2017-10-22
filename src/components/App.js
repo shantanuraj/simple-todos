@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Provider } from 'react-redux';
 
-import { Route } from 'react-router';
+import { Switch, Route } from 'react-router';
 
 import { ConnectedRouter } from 'react-router-redux';
 
@@ -20,8 +20,10 @@ class App extends Component {
         <div id="app">
           <ConnectedRouter history={history}>
             <div>
-              <Route exact path="/" component={ConnectedLogin}/>
-              <Route exact path="/todos" component={ConnectedTodos}/>
+            <Switch>
+              <Route path="/todos" component={ConnectedTodos}/>
+              <Route component={ConnectedLogin}/>
+            </Switch>
             </div>
           </ConnectedRouter>
         </div>
