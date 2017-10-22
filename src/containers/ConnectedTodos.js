@@ -10,7 +10,10 @@ import Todos from '../components/Todos';
 
 import { fetchTodos } from '../stores/todos';
 
-const mapStateToProps = (state) => state.todos;
+const mapStateToProps = (state) => ({
+  ...state.todos,
+  token: state.login.token,
+});
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   fetchTodos,

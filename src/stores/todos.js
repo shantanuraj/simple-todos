@@ -22,11 +22,11 @@ const getTodosFailure = (message) => ({
   message,
 });
 
-export const fetchTodos = () => {
+export const fetchTodos = (token) => {
   return dispatch => {
     dispatch(getTodos())
 
-    return fetch('https://www.mocky.io/v2/59ecdb853100009601d24e61')
+    return fetch(`https://www.mocky.io/v2/59ecdb853100009601d24e61?token=${token}`)
       .then(res => res.json())
       .then(todos => dispatch(getTodosSuccess(todos)))
       .catch(err => dispatch(getTodosFailure(err.message)));

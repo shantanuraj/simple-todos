@@ -4,20 +4,28 @@
 
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom'
+
 import '../styles/Todos.css';
 
 class Todos extends Component {
   componentDidMount() {
-    const { fetching, todos, fetchTodos } = this.props;
-    if (todos.length === 0 && !fetching) {
-      fetchTodos();
+    const { fetching, todos, fetchTodos, token } = this.props;
+    if (token && todos.length === 0 && !fetching) {
+      fetchTodos(token);
     }
   }
 
   render() {
-    const { fetching, todos, message } = this.props;
+    const { fetching, todos, message, token } = this.props;
 
-    console.log(message, fetching, todos);
+    if (!token) {
+      return (
+        <Link to="/login">
+          <span>Login</span>
+        </Link>
+      );
+    }
 
     if (message) {
       return <div id="error">Error! {message}</div>
